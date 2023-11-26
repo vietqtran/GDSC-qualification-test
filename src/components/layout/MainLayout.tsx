@@ -1,6 +1,5 @@
-import React, { Fragment } from "react"
-
 import Header from "../Header"
+import React from "react"
 
 type Props = {
    children: React.ReactNode
@@ -8,10 +7,10 @@ type Props = {
 
 const MainLayout = ({ children }: Props) => {
    return (
-      <Fragment>
+      <div className='w-full container mx-auto py-12'>
          <Header />
          <main>{children}</main>
-      </Fragment>
+      </div>
    )
 }
 
