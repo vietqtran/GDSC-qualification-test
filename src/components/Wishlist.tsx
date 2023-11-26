@@ -24,7 +24,7 @@ const Wishlist = () => {
    }, [])
 
    return (
-      <div className='absolute left-[50%] top-[100%] mt-2 hidden w-[300px] translate-x-[-50%] cursor-default rounded-[5px] text-black shadow-popup group-hover:flex'>
+      <div className='absolute left-[50%] top-[100%] mt-2 hidden w-[300px] translate-x-[-50%] cursor-default rounded-[5px] bg-white text-black shadow-popup group-hover:flex'>
          {products && products.length > 0 && (
             <div className='p-4'>
                {products.map((product) => {

@@ -7,7 +7,10 @@ module.exports = {
     extend: {
       fontSize: {
         '17': '1.0625rem',
-        '13': '0.8125rem'
+        '13': '0.8125rem',
+        '32': '2rem',
+        '54': '3.375rem',
+        '50': '3.125rem'
       },
       textColor: {
         'orange-primary': '#EB6440'

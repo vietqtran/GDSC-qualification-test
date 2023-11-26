@@ -8,20 +8,15 @@ import WishlistOrangeIcon from "./icons/WishlistOrangeIcon"
 
 const Header = () => {
    return (
-      <div className='w-full flex-center-between'>
+      <div className='flex-center-between w-full'>
          <div className='flex-center p-3'>
             <DinoIcon />
             <div className='pl-8'>
-               <h1 className='font-semibold text-2xl'>Dinomerch</h1>
+               <h1 className='text-2xl font-semibold'>Dinomerch</h1>
             </div>
          </div>
          <div className='flex-center'>
-            <div
-               className='
-            before:absolute before:contents-[] before:w-[664px] before:h-[50px] before:bg-transparent before:top-[100%] before:hidden hover:before:block before:left-[50%] before:translate-x-[-50%]
-            after:absolute after:contents-[] after:bg-white after:p-3 after:rotate-45 after:top-[calc(100%+10px)] after:hidden hover:after:block after:left-[50%] after:translate-x-[-50%]
-            relative flex-center group p-3 mr-5 cursor-pointer text-black hover:text-orange-primary'
-            >
+            <div className='before:contents-[] after:contents-[] flex-center group relative mr-5 cursor-pointer p-3 text-black before:absolute before:left-[50%] before:top-[100%] before:hidden before:h-[50px] before:w-[664px] before:translate-x-[-50%] before:bg-transparent after:absolute after:left-[50%] after:top-[calc(100%+10px)] after:hidden after:translate-x-[-50%] after:rotate-45 after:bg-white after:p-3 hover:text-orange-primary hover:before:block hover:after:block'>
                <div className='block group-hover:hidden'>
                   <CartIcon />
                </div>
@@ -29,9 +24,9 @@ const Header = () => {
                   <CartOrangeIcon />
                </div>
                <Cart />
-               <div className='font-medium text-17 pl-3'>Cart</div>
+               <div className='pl-3 text-17 font-medium'>Cart</div>
             </div>
-            <div className='relative flex-center group p-3 ml-5 text-black cursor-pointer hover:text-orange-primary'>
+            <div className='before:contents-[] flex-center group relative ml-5 cursor-pointer p-3 text-black before:absolute before:left-[50%] before:top-[100%] before:hidden before:h-[50px] before:w-[664px] before:translate-x-[-50%] before:bg-transparent hover:text-orange-primary hover:before:block'>
                <div className='block group-hover:hidden'>
                   <WishlistIcon />
                </div>
@@ -39,7 +34,7 @@ const Header = () => {
                   <WishlistOrangeIcon />
                </div>
                <Wishlist />
-               <div className='font-medium text-17 pl-3'>Wishlist</div>
+               <div className='pl-3 text-17 font-medium'>Wishlist</div>
             </div>
          </div>
       </div>

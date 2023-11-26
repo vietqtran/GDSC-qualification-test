@@ -24,7 +24,7 @@ const Cart = () => {
    }, [])
 
    return (
-      <div className='absolute left-[50%] top-[100%] mt-5 hidden w-[664px] translate-x-[-50%] rounded-[5px] p-[33px] text-black shadow-popup group-hover:flex'>
+      <div className='absolute left-[50%] top-[100%] mt-5 hidden w-[664px] translate-x-[-50%] rounded-[5px] bg-white p-[33px] text-black shadow-popup group-hover:flex'>
          <div className='flex w-full flex-col'>
             {products && products.length > 0 && (
                <div className='w-full'>

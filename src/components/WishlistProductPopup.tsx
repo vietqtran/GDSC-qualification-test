@@ -1,3 +1,4 @@
+import AddToCartButton from "./AddToCartButton"
 import { Product } from "../models/product"
 import React from "react"
 
@@ -20,9 +21,7 @@ const WishlistProductPopup = ({ product }: Props) => {
             <span className='py-3 text-17 font-bold'>
                ${product.price.toFixed(2)}
             </span>
-            <button className='rounded-[4px] border-2 border-orange-500 px-6 py-2 text-13 font-semibold text-orange-primary'>
-               Add to cart
-            </button>
+            <AddToCartButton />
          </div>
       </div>
    )
