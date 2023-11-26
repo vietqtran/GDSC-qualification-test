@@ -7,7 +7,7 @@ type Props = {
 
 const MainLayout = ({ children }: Props) => {
    return (
-      <div className='w-full container mx-auto py-12'>
+      <div className='w-full container mx-auto py-12 '>
          <Header />
          <main>{children}</main>
       </div>

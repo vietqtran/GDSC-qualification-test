@@ -1,3 +1,4 @@
+import Cart from "./Cart"
 import CartIcon from "./icons/CartIcon"
 import CartOrangeIcon from "./icons/CartOrangeIcon"
 import DinoIcon from "./icons/DinoIcon"
@@ -14,13 +15,19 @@ const Header = () => {
             </div>
          </div>
          <div className='flex-center'>
-            <div className='flex-center group p-3 mr-5 cursor-pointer text-black hover:text-orange-primary'>
+            <div
+               className='
+            before:absolute before:contents-[] before:w-[664px] before:h-[50px] before:bg-transparent before:top-[100%] before:hidden hover:before:block before:left-[50%] before:translate-x-[-50%]
+            after:absolute after:contents-[] after:bg-white after:p-3 after:rotate-45 after:top-[calc(100%+10px)] after:hidden hover:after:block after:left-[50%] after:translate-x-[-50%]
+            relative flex-center group p-3 mr-5 cursor-pointer text-black hover:text-orange-primary'
+            >
                <div className='block group-hover:hidden'>
                   <CartIcon />
                </div>
                <div className='hidden group-hover:block'>
                   <CartOrangeIcon />
                </div>
+               <Cart />
                <div className='font-medium text-17 pl-3'>Cart</div>
             </div>
             <div className='flex-center group p-3 ml-5 text-black cursor-pointer hover:text-orange-primary'>
