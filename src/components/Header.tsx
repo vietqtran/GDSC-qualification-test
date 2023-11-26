@@ -2,6 +2,7 @@ import Cart from "./Cart"
 import CartIcon from "./icons/CartIcon"
 import CartOrangeIcon from "./icons/CartOrangeIcon"
 import DinoIcon from "./icons/DinoIcon"
+import Wishlist from "./Wishlist"
 import WishlistIcon from "./icons/WishlistIcon"
 import WishlistOrangeIcon from "./icons/WishlistOrangeIcon"
 
@@ -30,13 +31,14 @@ const Header = () => {
                <Cart />
                <div className='font-medium text-17 pl-3'>Cart</div>
             </div>
-            <div className='flex-center group p-3 ml-5 text-black cursor-pointer hover:text-orange-primary'>
+            <div className='relative flex-center group p-3 ml-5 text-black cursor-pointer hover:text-orange-primary'>
                <div className='block group-hover:hidden'>
                   <WishlistIcon />
                </div>
                <div className='hidden group-hover:block'>
                   <WishlistOrangeIcon />
                </div>
+               <Wishlist />
                <div className='font-medium text-17 pl-3'>Wishlist</div>
             </div>
          </div>

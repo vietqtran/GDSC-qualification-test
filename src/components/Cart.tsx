@@ -24,8 +24,8 @@ const Cart = () => {
    }, [])
 
    return (
-      <div className='text-black absolute mt-5 hidden rounded-[5px] group-hover:flex p-[33px] w-[664px] top-[100%] shadow-popup left-[50%] translate-x-[-50%]'>
-         <div className='flex flex-col w-full'>
+      <div className='absolute left-[50%] top-[100%] mt-5 hidden w-[664px] translate-x-[-50%] rounded-[5px] p-[33px] text-black shadow-popup group-hover:flex'>
+         <div className='flex w-full flex-col'>
             {products && products.length > 0 && (
                <div className='w-full'>
                   {products.map((product) => {
@@ -44,7 +44,7 @@ const Cart = () => {
                   </div>
                </div>
                <div>
-                  <button className='text-13 py-3 px-9 rounded-[8px] bg-orange-primary text-white'>
+                  <button className='rounded-[8px] bg-orange-primary px-9 py-3 text-13 text-white'>
                      Checkout
                   </button>
                </div>

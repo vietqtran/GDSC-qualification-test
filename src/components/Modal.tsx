@@ -5,7 +5,7 @@ type Props = {}
 
 const Modal = (props: Props) => {
    return (
-      <div className='w-[100vw] h-[100vh] absolute top-0 left-0 right-0 bottom-0 z-50'>
+      <div className='absolute bottom-0 left-0 right-0 top-0 z-50 h-[100vh] w-[100vw]'>
          <Overlay>
             <h1>Modal</h1>
          </Overlay>

@@ -6,7 +6,7 @@ type Props = {
 
 const Overlay = ({ children }: Props) => {
    return (
-      <div className='w-full h-full grid place-items-center bg-black bg-opacity-40'>
+      <div className='grid h-full w-full place-items-center bg-black bg-opacity-40'>
          {children}
       </div>
    )

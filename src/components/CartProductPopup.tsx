@@ -10,16 +10,16 @@ type Props = {
 
 const CartProductPopup = ({ product }: Props) => {
    return (
-      <div className='h-[120px] cursor-default p-2 border-b-[1px] flex-center-between border-b-gray-300'>
+      <div className='flex-center-between h-[120px] cursor-default border-b-[1px] border-b-gray-300 p-2'>
          <div className='h-full'>
             <img
                alt={product.name}
-               className='h-full aspect-square object-cover'
+               className='aspect-square h-full object-cover'
                src={product.image}
             />
          </div>
          <div className='flex-1'>
-            <p className='w-full font-semibold text-13 px-5 truncate'>
+            <p className='w-full truncate px-5 text-13 font-semibold'>
                {product.name}
             </p>
          </div>
@@ -33,7 +33,7 @@ const CartProductPopup = ({ product }: Props) => {
                   <PlusIcon />
                </button>
             </div>
-            <div className='flex-1 font-bold px-3 text-17 text-center min-w-[100px]'>
+            <div className='min-w-[100px] flex-1 px-3 text-center text-17 font-bold'>
                ${product.price.toFixed(2)}
             </div>
             <div>
