@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from "react"
 
-import { CartItem } from "../models/cartItem"
 import { Product } from "../models/product"
 import ProductCard from "./ProductCard"
-import { RootState } from "../redux/reducers"
-import { useSelector } from "react-redux"
+import { addItemToCart } from "../redux/actions/cartAction"
+import { useDispatch } from "react-redux"
 
 const ProductList = () => {
    const [products, setProducts] = useState<Product[]>([])
-   const cartProducts: CartItem[] = useSelector(
-      (state: RootState) => state.cart
-   )
 
-   console.log(cartProducts)
    useEffect(() => {
       const fetchData = async () => {
          try {
@@ -29,10 +24,22 @@ const ProductList = () => {
 
       fetchData()
    }, [])
+
+   const dispatch = useDispatch()
+   const handleAddToCart = (product: Product) => {
+      dispatch(addItemToCart(product))
+   }
+
    return (
       <div className='grid w-full grid-cols-3 gap-10'>
          {products.map((product) => {
-            return <ProductCard key={product._id} product={product} />
+            return (
+               <ProductCard
+                  handleAddToCart={handleAddToCart}
+                  product={product}
+                  key={product._id}
+               />
+            )
          })}
       </div>
    )

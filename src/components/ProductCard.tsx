@@ -4,9 +4,10 @@ import React from "react"
 
 type Props = {
    product: Product
+   handleAddToCart: (product: Product) => void
 }
 
-const ProductCard = ({ product }: Props) => {
+const ProductCard = ({ product, handleAddToCart }: Props) => {
    return (
       <div className='col-span-1 p-3'>
          <div className='w-full bg-[#f3f3f3] p-10'>
@@ -21,7 +22,11 @@ const ProductCard = ({ product }: Props) => {
          </div>
          <div className='flex-center-between'>
             <div className='text-xl font-bold'>${product.price.toFixed(2)}</div>
-            <div>
+            <div
+               onClick={() => {
+                  handleAddToCart(product)
+               }}
+            >
                <AddToCartButton />
             </div>
          </div>

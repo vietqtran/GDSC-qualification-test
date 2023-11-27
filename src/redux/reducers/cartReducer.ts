@@ -7,7 +7,16 @@ const initialState: CartItem[] = []
 export const cartReducer = (state = initialState, action: any) => {
     switch (action.type) {
         case ADD_ITEM_TO_CART: {
-            return [ ...state, action.payload ]
+            const cartItem = state.find((item) => item.product._id === action.payload._id)
+            if (cartItem !== undefined) {
+                return state.map((item) => {
+                    if (item.product._id === action.payload._id) {
+                        return { ...item, quantity: item.quantity + 1 }
+                    }
+                    return item
+                })
+            }
+            return [ { product: action.payload, quantity: 1 }, ...state ]
         }
         case DELETE_CART_ITEM: {
             return state.filter((cartItem) => cartItem.product._id !== action.payload)
