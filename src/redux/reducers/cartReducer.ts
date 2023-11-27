@@ -1,4 +1,4 @@
-import { ADD_ITEM_TO_CART, DECREASE_CART_ITEM_QUANTITY, DELETE_CART_ITEM, INCREASE_CART_ITEM_QUANTITY } from "../actions/cartAction";
+import { ADD_ITEM_TO_CART, DECREASE_CART_ITEM_QUANTITY, DELETE_CART_ITEM, EMPTY_CART, INCREASE_CART_ITEM_QUANTITY } from "../actions/cartAction";
 
 import { CartItem } from "../../models/cartItem";
 import { showToast } from "../../utils/toast";
@@ -35,6 +35,9 @@ export const cartReducer = (state = initialState, action: any) => {
                 }
                 return cartItem
             })
+        }
+        case EMPTY_CART: {
+            return []
         }
         default: {
             return state

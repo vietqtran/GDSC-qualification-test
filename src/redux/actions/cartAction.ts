@@ -4,7 +4,7 @@ export const ADD_ITEM_TO_CART = 'ADD_ITEM_TO_CART'
 export const DELETE_CART_ITEM = 'DELETE_CART_ITEM'
 export const INCREASE_CART_ITEM_QUANTITY = 'INCREASE_CART_ITEM_QUANTITY'
 export const DECREASE_CART_ITEM_QUANTITY = 'DECREASE_CART_ITEM_QUANTITY'
-
+export const EMPTY_CART = 'EMPTY_CART'
 
 export const addItemToCart = (product: Product) => {
     return {
@@ -31,5 +31,12 @@ export const decreaseCartItemQuantity = (productId: string) => {
     return {
         type: DECREASE_CART_ITEM_QUANTITY,
         payload: productId
+    }
+}
+
+export const emptyCart = () => {
+    return {
+        type: EMPTY_CART,
+        payload: null
     }
 }

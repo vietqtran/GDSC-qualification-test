@@ -6,14 +6,14 @@ module.exports = {
   theme: {
     extend: {
       fontSize: {
-        '17': '1.0625rem',
+        '11': '0.6875rem',
         '13': '0.8125rem',
+        '17': '1.0625rem',
         '15': '0.9375rem',
         '28': '1.75rem',
         '32': '2rem',
         '54': '3.375rem',
         '50': '3.125rem',
-
       },
       textColor: {
         'orange-primary': '#EB6440'
