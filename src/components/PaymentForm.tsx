@@ -6,6 +6,9 @@ import PaymentMethods from "./PaymentMethods"
 import { RootState } from "../redux/reducers"
 import { useSelector } from "react-redux"
 
+const SHIPMENT_COST = 6.5
+const TAX_COLLECTED = 0.8
+
 const PaymentForm = () => {
    const [firstName, setFirstName] = useState("")
    const [lastName, setLastName] = useState("")
@@ -76,17 +79,29 @@ const PaymentForm = () => {
                      </span>
                   </div>
                   <div className='flex-center-between pb-4'>
-                     <span>{`Items (${cartProducts.length}): `}</span>
-                     <span>$ 96.00</span>
+                     <span>Shipment Cost: </span>
+                     <span>$ {SHIPMENT_COST.toFixed(2)}</span>
                   </div>
                   <div className='flex-center-between pb-4'>
-                     <span>Shipment Cost: </span>
-                     <span>$ 6.50</span>
+                     <span>Tax Collected: </span>
+                     <span>$ {TAX_COLLECTED.toFixed(2)}</span>
                   </div>
                   <hr className='w-[380px] mx-auto mt-3 mb-8 block' />
                   <div className='flex-center-between font-semibold pb-4'>
-                     <span>Tax Collected: </span>
-                     <span>$ 0.80</span>
+                     <span>Order total: </span>
+                     <span>
+                        ${" "}
+                        {(
+                           cartProducts.reduce(
+                              (init, cartItem) =>
+                                 cartItem.product.price * cartItem.quantity +
+                                 init,
+                              0
+                           ) +
+                           TAX_COLLECTED +
+                           SHIPMENT_COST
+                        ).toFixed(2)}
+                     </span>
                   </div>
                   <div className='grid place-items-center mt-5 '>
                      <button className='py-5 font-semibold px-[82px] border-2 border-orange-primary hover:text-orange-primary hover:bg-white duration-150 ease-out bg-orange-primary rounded-lg text-white text-xl'>
