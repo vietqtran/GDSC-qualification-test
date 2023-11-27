@@ -37,9 +37,9 @@ const CartProductPopup = ({ product }: Props) => {
                ${product.price.toFixed(2)}
             </div>
             <div>
-               <button className='p-3'>
+               <div className='p-3'>
                   <GarbageIcon />
-               </button>
+               </div>
             </div>
          </div>
       </div>

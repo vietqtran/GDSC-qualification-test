@@ -22,9 +22,7 @@ const ProductCard = ({ product }: Props) => {
          <div className='flex-center-between'>
             <div className='text-xl font-bold'>${product.price.toFixed(2)}</div>
             <div>
-               <button>
-                  <AddToCartButton />
-               </button>
+               <AddToCartButton />
             </div>
          </div>
       </div>
