@@ -8,9 +8,12 @@ module.exports = {
       fontSize: {
         '17': '1.0625rem',
         '13': '0.8125rem',
+        '15': '0.9375rem',
+        '28': '1.75rem',
         '32': '2rem',
         '54': '3.375rem',
-        '50': '3.125rem'
+        '50': '3.125rem',
+
       },
       textColor: {
         'orange-primary': '#EB6440'
