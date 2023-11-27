@@ -42,7 +42,7 @@ const Cart = () => {
                   </div>
                </div>
                <div>
-                  <button className='rounded-[8px] outline outline-2 hover:bg-white hover:text-orange-primary duration-150 ease-in-out bg-orange-primary px-9 py-3 text-13 text-white'>
+                  <button className='rounded-[8px] border-2 border-orange-primary hover:bg-white hover:text-orange-primary duration-150 ease-in-out bg-orange-primary px-9 py-3 text-13 text-white'>
                      Checkout
                   </button>
                </div>

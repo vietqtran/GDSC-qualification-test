@@ -20,6 +20,9 @@ module.exports = {
       },
       boxShadow: {
         'popup': 'rgba(17, 17, 26, 0.1) 0px -8px 16px, rgba(17, 17, 26, 0.05) 10px 16px 20px'
+      },
+      borderColor: {
+        'orange-primary': '#EB6440'
       }
     },
   },
