@@ -35,7 +35,7 @@ const OrderProduct = ({ product }: Props) => {
             </span>
          </div>
          <div className='h-full aspect-square font-bold'>
-            ${product.product.price.toFixed(2)}
+            ${(product.product.price * product.quantity).toFixed(2)}
          </div>
       </div>
    )

@@ -12,7 +12,7 @@ const Header = () => {
    const cartQuantity = useSelector((state: RootState) => state.cart).length
    const isCheckoutPage = window.location.pathname.endsWith("checkout")
    return (
-      <div className='flex-center-between w-full z-50'>
+      <div className='flex-center-between w-full z-30'>
          <div className='flex-center p-3'>
             <DinoIcon />
             <div className='pl-8'>
@@ -35,7 +35,7 @@ const Header = () => {
                >
                   <CartOrangeIcon />
                </div>
-               <Cart />
+               {cartQuantity > 0 && <Cart />}
                <div
                   className={`${
                      isCheckoutPage ? "text-orange-primary" : ""
@@ -43,9 +43,11 @@ const Header = () => {
                >
                   Cart
                </div>
-               <div className='ml-2 w-[30px] grid place-items-center text-17 h-[30px] bg-orange-primary text-white aspect-square rounded-full'>
-                  <span className='leading-none'>{cartQuantity}</span>
-               </div>
+               {cartQuantity > 0 && (
+                  <div className='ml-2 w-[30px] grid place-items-center text-17 h-[30px] bg-orange-primary text-white aspect-square rounded-full'>
+                     <span className='leading-none'>{cartQuantity}</span>
+                  </div>
+               )}
             </div>
             <div className='before:contents-[] flex-center group relative ml-5 cursor-pointer p-3 text-black before:absolute before:left-[50%] before:top-[100%] before:hidden before:h-[50px] before:w-[664px] before:translate-x-[-50%] before:bg-transparent hover:text-orange-primary hover:before:block'>
                <div className='block group-hover:hidden'>

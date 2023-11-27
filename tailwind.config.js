@@ -22,7 +22,8 @@ module.exports = {
         'orange-primary': '#EB6440'
       },
       boxShadow: {
-        'popup': 'rgba(17, 17, 26, 0.1) 0px -8px 16px, rgba(17, 17, 26, 0.05) 10px 16px 20px'
+        'popup': 'rgba(17, 17, 26, 0.1) 0px -8px 16px, rgba(17, 17, 26, 0.05) 10px 16px 20px',
+        'toast': '0 4px 4px rgba(0,0,0,0.25)'
       },
       borderColor: {
         'orange-primary': '#EB6440'

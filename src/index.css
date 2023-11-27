@@ -27,3 +27,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@keyframes toast {
+  from {
+    top: -80px;
+  }
+
+  to {
+    top: 40px;
+  }
+}
+
+.toast-keyframe {
+  animation: toast .2s ease-out;
+}

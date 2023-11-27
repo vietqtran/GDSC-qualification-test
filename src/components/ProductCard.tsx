@@ -23,7 +23,6 @@ const ProductCard = ({ product, handleAddToCart }: Props) => {
       (state: RootState) => state.wishlist
    ).map((item) => item._id)
 
-   console.log(wishlistProducts)
    return (
       <div className='col-span-1 p-3 z-10'>
          <div className='w-full bg-[#f3f3f3] p-10 relative'>

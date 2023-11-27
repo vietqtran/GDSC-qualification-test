@@ -1,5 +1,6 @@
 import Header from "../Header"
 import React from "react"
+import ToastTop from "../ToastTop"
 
 type Props = {
    children: React.ReactNode
@@ -7,7 +8,12 @@ type Props = {
 
 const MainLayout = ({ children }: Props) => {
    return (
-      <div className='container mx-auto w-full max-w-[1140px] pb-40 pt-12'>
+      <div
+         id='main'
+         className='container mx-auto w-full max-w-[1140px] pb-40 pt-12'
+      >
+         <ToastTop />
+
          <Header />
          <main>{children}</main>
       </div>

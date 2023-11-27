@@ -1,6 +1,5 @@
 import DownArrow from "./icons/DownArrow"
 import GiantDino from "./icons/GiantDino"
-import { Link } from "react-router-dom"
 
 const Banner = () => {
    return (

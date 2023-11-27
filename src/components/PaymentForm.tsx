@@ -10,6 +10,8 @@ const SHIPMENT_COST = 6.5
 const TAX_COLLECTED = 0.8
 
 const PaymentForm = () => {
+   const cartProducts = useSelector((state: RootState) => state.cart)
+
    const [firstName, setFirstName] = useState("")
    const [lastName, setLastName] = useState("")
    const [phone, setPhone] = useState<number>()
@@ -18,11 +20,19 @@ const PaymentForm = () => {
    const [cardNumber, setCardNumber] = useState<number>()
    const [expDate, setExpDate] = useState("")
    const [cvv, setCvv] = useState<number>()
-   const [nunberOfItems, setNunberOfItems] = useState<number>()
-   const [orderTotal, setOrderTotal] = useState("")
 
-   const cartProducts = useSelector((state: RootState) => state.cart)
-
+   const numberOfItems = cartProducts.length
+   const cartTotal = cartProducts.reduce(
+      (init, cartItem) => cartItem.product.price * cartItem.quantity + init,
+      0
+   )
+   const orderTotal =
+      cartProducts.reduce(
+         (init, cartItem) => cartItem.product.price * cartItem.quantity + init,
+         0
+      ) +
+      TAX_COLLECTED +
+      SHIPMENT_COST
    return (
       <div>
          <div className='w-full grid grid-cols-11 gap-10 mb-14'>
@@ -30,28 +40,56 @@ const PaymentForm = () => {
                <h1 className='text-28 font-semibold mb-8'>Shipping Address</h1>
                <div className='grid grid-cols-2 gap-4'>
                   <div className='col-span-1'>
-                     <Input label='First Name' />
+                     <Input
+                        value={firstName}
+                        setValue={setFirstName}
+                        label='First Name'
+                     />
                   </div>
                   <div className='col-span-1'>
-                     <Input label='Last Name' />
+                     <Input
+                        setValue={setLastName}
+                        value={lastName}
+                        label='Last Name'
+                     />
                   </div>
                </div>
-               <Input label='Phone Number' />
-               <Input label='Street Address' />
+               <Input
+                  value={phone ?? ""}
+                  setValue={setPhone}
+                  label='Phone Number'
+               />
+               <Input
+                  value={address}
+                  setValue={setAddress}
+                  label='Street Address'
+               />
             </div>
             <div className='col-span-5'>
                <h1 className='text-28 font-semibold mb-5'>Payment Details</h1>
                <div className='mb-5'>
                   <PaymentMethods />
                </div>
-               <Input label='Cardholder Name' />
-               <Input label='Cardholder Number' />
+               <Input
+                  setValue={setCardName}
+                  value={cardName}
+                  label='Cardholder Name'
+               />
+               <Input
+                  value={cardNumber ?? ""}
+                  setValue={setCardNumber}
+                  label='Cardholder Number'
+               />
                <div className='grid grid-cols-2 gap-4'>
                   <div className='col-span-1'>
-                     <Input label='Expiration Date' />
+                     <Input
+                        setValue={setExpDate}
+                        value={expDate}
+                        label='Expiration Date'
+                     />
                   </div>
                   <div className='col-span-1'>
-                     <Input label='CVV' />
+                     <Input setValue={setCvv} value={cvv ?? ""} label='CVV' />
                   </div>
                </div>
             </div>
@@ -65,17 +103,10 @@ const PaymentForm = () => {
                <h1 className='text-28 font-semibold mb-5'>Order Summary</h1>
                <div className='max-w-[430px] w-full text-15 text-[#5D6B82]'>
                   <div className='flex-center-between pb-4'>
-                     <span>{`Items (${cartProducts.length}): `}</span>
+                     <span>{`Items (${numberOfItems}): `}</span>
                      <span>
                         <span>$ </span>
-                        {cartProducts
-                           .reduce(
-                              (init, cartItem) =>
-                                 cartItem.product.price * cartItem.quantity +
-                                 init,
-                              0
-                           )
-                           .toFixed(2)}
+                        {cartTotal.toFixed(2)}
                      </span>
                   </div>
                   <div className='flex-center-between pb-4'>
@@ -89,19 +120,7 @@ const PaymentForm = () => {
                   <hr className='w-[380px] mx-auto mt-3 mb-8 block' />
                   <div className='flex-center-between font-semibold pb-4'>
                      <span>Order total: </span>
-                     <span>
-                        ${" "}
-                        {(
-                           cartProducts.reduce(
-                              (init, cartItem) =>
-                                 cartItem.product.price * cartItem.quantity +
-                                 init,
-                              0
-                           ) +
-                           TAX_COLLECTED +
-                           SHIPMENT_COST
-                        ).toFixed(2)}
-                     </span>
+                     <span>$ {orderTotal.toFixed(2)}</span>
                   </div>
                   <div className='grid place-items-center mt-5 '>
                      <button className='py-5 font-semibold px-[82px] border-2 border-orange-primary hover:text-orange-primary hover:bg-white duration-150 ease-out bg-orange-primary rounded-lg text-white text-xl'>
