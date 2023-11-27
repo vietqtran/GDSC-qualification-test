@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react"
 import { Product } from "../models/product"
 import ProductCard from "./ProductCard"
 import { addItemToCart } from "../redux/actions/cartAction"
-import { showSuccessToast } from "../utils/toast"
 import { useDispatch } from "react-redux"
 
 const ProductList = () => {
@@ -29,7 +28,6 @@ const ProductList = () => {
    const dispatch = useDispatch()
    const handleAddToCart = (product: Product) => {
       dispatch(addItemToCart(product))
-      showSuccessToast("Item successfully added to cart")
    }
 
    return (

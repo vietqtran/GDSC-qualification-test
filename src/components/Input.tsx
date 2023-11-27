@@ -8,15 +8,16 @@ type Props = {
 
 const Input = ({ label, value, setValue }: Props) => {
    return (
-      <div className='w-full mb-5'>
-         <label className='text-[#5D6B82] text-17 mb-1 block'>{label}</label>
+      <div className='mb-5 w-full'>
+         <label className='mb-1 block text-17 text-[#5D6B82]'>{label}</label>
          <input
             value={value}
             onChange={(e) => {
                setValue(e.target.value)
             }}
             type='text'
-            className='bg-[#F5F6F7] w-full text-17 h-[60px] border-2 border-[#DFE2E6] rounded-lg leading-none outline-none px-3'
+            required
+            className='h-[60px] w-full rounded-lg border-2 border-[#DFE2E6] bg-[#F5F6F7] px-3 text-17 leading-none outline-none'
          />
       </div>
    )

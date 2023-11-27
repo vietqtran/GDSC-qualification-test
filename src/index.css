@@ -28,7 +28,17 @@ code {
     monospace;
 }
 
-@keyframes toast {
+@keyframes toast-bottom {
+  from {
+    bottom: -80px;
+  }
+
+  to {
+    bottom: 40px;
+  }
+}
+
+@keyframes toast-top {
   from {
     top: -80px;
   }
@@ -38,6 +48,10 @@ code {
   }
 }
 
-.toast-keyframe {
-  animation: toast .2s ease-out;
+.toast-top-keyframe {
+  animation: toast-top .2s ease-out;
+}
+
+.toast-bottom-keyframe {
+  animation: toast-bottom .2s ease-out;
 }
