@@ -12,7 +12,7 @@ const Header = () => {
    const cartQuantity = useSelector((state: RootState) => state.cart).length
    const isCheckoutPage = window.location.pathname.endsWith("checkout")
    return (
-      <div className='flex-center-between w-full z-30'>
+      <div className='flex-center-between z-30 w-full'>
          <div className='flex-center p-3'>
             <DinoIcon />
             <div className='pl-8'>
@@ -20,7 +20,7 @@ const Header = () => {
             </div>
          </div>
          <div className='flex-center'>
-            <div className='before:contents-[] after:contents-[] flex-center group relative mr-5 cursor-pointer p-3 before:absolute before:left-[50%] before:top-[100%] before:hidden before:h-[50px] before:w-[664px] before:translate-x-[-50%] before:bg-transparent after:absolute after:left-[50%] after:top-[calc(100%+10px)] after:hidden after:translate-x-[-50%] after:rotate-45 after:bg-white after:p-3 hover:text-orange-primary hover:before:block hover:after:block'>
+            <div className='before:contents-[] after:contents-[] flex-center group relative mr-5 cursor-pointer p-3 before:absolute before:left-[50%] before:top-[100%] before:hidden before:h-[50px] before:w-[664px] before:translate-x-[-50%] before:bg-transparent after:absolute after:left-[50%] after:top-[calc(100%+10px)] after:z-30 after:hidden after:translate-x-[-50%] after:rotate-45 after:bg-white after:p-3 hover:text-orange-primary hover:before:block hover:after:block'>
                <div
                   className={`${
                      isCheckoutPage ? "hidden" : "block group-hover:hidden"
@@ -44,7 +44,7 @@ const Header = () => {
                   Cart
                </div>
                {cartQuantity > 0 && (
-                  <div className='ml-2 w-[30px] grid place-items-center text-17 h-[30px] bg-orange-primary text-white aspect-square rounded-full'>
+                  <div className='ml-2 grid aspect-square h-[30px] w-[30px] place-items-center rounded-full bg-orange-primary text-17 text-white'>
                      <span className='leading-none'>{cartQuantity}</span>
                   </div>
                )}

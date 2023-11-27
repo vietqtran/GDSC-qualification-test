@@ -1,11 +1,14 @@
 export const showSuccessToast = (message: string) => {
     const main = document.getElementById('main')
-    const randomId = 'toast' + Math.random()
+
     if (main) {
+        if (document.getElementById('toast') !== null) {
+            document.getElementById('toast')?.remove()
+        }
         main.insertAdjacentHTML('beforeend', `
             <div
-                id='${randomId}'
-                class='fixed toast-keyframe z-50 top-[-80px] p-5 flex-center text-xl rounded-[8px] duration-150 ease-linear left-[50%] translate-x-[-50%] bg-[#F5F6F7]'
+                id='toast'
+                class='toast-keyframe flex-center fixed left-[50%] top-[-80px] z-50 translate-x-[-50%] rounded-[8px] bg-[#F5F6F7] p-5 text-xl shadow-toast duration-150 ease-linear'
             >
                 <svg
                     width='20'
@@ -24,7 +27,7 @@ export const showSuccessToast = (message: string) => {
             </div>
         `);
     }
-    const toast = document.getElementById(randomId)
+    const toast = document.getElementById('toast')
     if (toast) {
         toast.style.top = '40px'
         console.log(toast)
