@@ -1,12 +1,12 @@
 export interface PaymentFormModel {
     firstName: string;
     lastName: string;
-    phone: number;
+    phone: number | null;
     address: string;
     cardName: string;
-    cardNumber: number;
+    cardNumber: number | null;
     expDate: string;
-    cvv: number;
-    numberOfItems: number;
+    cvv: number | null;
+    numberOfItems: number | null;
     orderTotal: string;
 }

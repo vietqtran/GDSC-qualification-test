@@ -1,6 +1,7 @@
-import { Fragment, useState } from "react"
+import { Fragment, useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
+import { CartItem } from "../../models/cartItem"
 import Input from "./Input"
 import InvoiceCheck from "../icons/InvoiceCheck"
 import { Link } from "react-router-dom"
@@ -20,35 +21,39 @@ const PaymentForm = () => {
    const cartProducts = useSelector((state: RootState) => state.cart)
    const [showInvoice, setShowInvoice] = useState(false)
 
-   const [firstName, setFirstName] = useState("")
-   const [lastName, setLastName] = useState("")
-   const [phone, setPhone] = useState<number>()
-   const [address, setAddress] = useState("")
-   const [cardName, setCardName] = useState("")
-   const [cardNumber, setCardNumber] = useState<number>()
-   const [expDate, setExpDate] = useState("")
-   const [cvv, setCvv] = useState<number>()
+   const [formData, setFormData] = useState<PaymentFormModel>({
+      firstName: "",
+      lastName: "",
+      phone: null,
+      address: "",
+      cardName: "",
+      cardNumber: null,
+      expDate: "",
+      cvv: null,
+      numberOfItems: null,
+      orderTotal: "",
+   })
 
-   const numberOfItems = cartProducts.length
-   const cartTotal = cartProducts.reduce(
-      (init, cartItem) => cartItem.product.price * cartItem.quantity + init,
-      0
-   )
-   const orderTotal = cartTotal + TAX_COLLECTED + SHIPMENT_COST
+   const lastCartTotal = useRef(0)
+
+   useEffect(() => {
+      if (cartProducts.length > 0) {
+         const total = cartProducts.reduce(
+            (init, cartItem) =>
+               cartItem.product.price * cartItem.quantity + init,
+            0
+         )
+         lastCartTotal.current = total
+         const data: PaymentFormModel = {
+            ...formData,
+            orderTotal: (total + TAX_COLLECTED + SHIPMENT_COST).toFixed(2) + "",
+            numberOfItems: cartProducts.length,
+         }
+         setFormData(data)
+      }
+   }, [cartProducts])
 
    const handleSubmitForm = async () => {
-      const formData: PaymentFormModel = {
-         address: address,
-         cardName: cardName,
-         cardNumber: cardNumber ?? 0,
-         cvv: cvv ?? 0,
-         expDate: expDate,
-         firstName: firstName,
-         lastName: lastName,
-         numberOfItems: numberOfItems,
-         orderTotal: orderTotal + "",
-         phone: phone ?? 0,
-      }
       try {
          const response = await fetch(
             "https://testapi.io/api/dinomerch/resource/payment",
@@ -63,9 +68,17 @@ const PaymentForm = () => {
          if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`)
          }
+         console.log(formData)
          setShowInvoice(true)
          dispatch(emptyCart())
       } catch (error) {}
+   }
+
+   const handleInputChange = (name: string, value: string) => {
+      setFormData((prevFormData) => ({
+         ...prevFormData,
+         [name]: value,
+      }))
    }
    return (
       <Fragment>
@@ -106,7 +119,7 @@ const PaymentForm = () => {
                   </div>
                   <div className='flex-center-between w-full border-b-2 border-b-[#F5F6F7] pb-6 pt-8 text-15 font-semibold leading-4 text-[#5D6B82]'>
                      <p>Sub total:</p>
-                     <p>$ {cartTotal.toFixed(2)}</p>
+                     <p>$ {lastCartTotal.current.toFixed(2)}</p>
                   </div>
                   <div className='w-full border-b-2 border-b-[#F5F6F7] pb-10 pt-4 text-15 text-[#5D6B82]'>
                      <div className='flex-center-between pb-4'>
@@ -121,7 +134,7 @@ const PaymentForm = () => {
                   <div className='pt-3'>
                      <div className='flex-center-between pb-4 text-15 font-semibold'>
                         <p>Grand total:</p>
-                        <p>${orderTotal}</p>
+                        <p>${formData.orderTotal}</p>
                      </div>
                   </div>
                   <div className='w-full p-3'>
@@ -151,31 +164,35 @@ const PaymentForm = () => {
                   <div className='grid w-full grid-cols-2 gap-4'>
                      <div className='col-span-1'>
                         <Input
+                           handleInputChange={handleInputChange}
+                           name={"firstName"}
                            type='text'
-                           value={firstName}
-                           setValue={setFirstName}
+                           value={formData.firstName}
                            label='First Name'
                         />
                      </div>
                      <div className='col-span-1'>
                         <Input
+                           handleInputChange={handleInputChange}
+                           name={"lastName"}
                            type='text'
-                           setValue={setLastName}
-                           value={lastName}
+                           value={formData.lastName}
                            label='Last Name'
                         />
                      </div>
                   </div>
                   <Input
+                     handleInputChange={handleInputChange}
+                     name={"phone"}
                      type='number'
-                     value={phone ?? ""}
-                     setValue={setPhone}
+                     value={formData.phone ?? ""}
                      label='Phone Number'
                   />
                   <Input
+                     handleInputChange={handleInputChange}
+                     name={"address"}
                      type='text'
-                     value={address}
-                     setValue={setAddress}
+                     value={formData.address}
                      label='Street Address'
                   />
                </div>
@@ -187,31 +204,35 @@ const PaymentForm = () => {
                      <PaymentMethods />
                   </div>
                   <Input
+                     handleInputChange={handleInputChange}
+                     name={"cardName"}
                      type='text'
-                     setValue={setCardName}
-                     value={cardName}
+                     value={formData.cardName}
                      label='Cardholder Name'
                   />
                   <Input
+                     handleInputChange={handleInputChange}
+                     name={"cardNumber"}
                      type='number'
-                     value={cardNumber ?? ""}
-                     setValue={setCardNumber}
+                     value={formData.cardNumber ?? ""}
                      label='Cardholder Number'
                   />
                   <div className='grid grid-cols-2 gap-4'>
                      <div className='col-span-1'>
                         <Input
+                           handleInputChange={handleInputChange}
+                           name={"expDate"}
                            type='text'
-                           setValue={setExpDate}
-                           value={expDate}
+                           value={formData.expDate}
                            label='Expiration Date'
                         />
                      </div>
                      <div className='col-span-1'>
                         <Input
+                           handleInputChange={handleInputChange}
+                           name={"cvv"}
                            type='number'
-                           setValue={setCvv}
-                           value={cvv ?? ""}
+                           value={formData.cvv ?? ""}
                            label='CVV'
                         />
                      </div>
@@ -235,10 +256,10 @@ const PaymentForm = () => {
                   </h1>
                   <div className='w-full max-w-[430px] text-15 text-[#5D6B82]'>
                      <div className='flex-center-between pb-4'>
-                        <span>{`Items (${numberOfItems}): `}</span>
+                        <span>{`Items (${formData.numberOfItems}): `}</span>
                         <span>
                            <span>$ </span>
-                           {cartTotal.toFixed(2)}
+                           {lastCartTotal.current.toFixed(2)}
                         </span>
                      </div>
                      <div className='flex-center-between pb-4'>
@@ -252,7 +273,7 @@ const PaymentForm = () => {
                      <hr className='mx-auto mb-8 mt-3 block w-[380px]' />
                      <div className='flex-center-between pb-4 font-semibold'>
                         <span>Order total: </span>
-                        <span>$ {orderTotal.toFixed(2)}</span>
+                        <span>$ {formData.orderTotal}</span>
                      </div>
                      <div className='mt-5 grid place-items-center'>
                         <button
