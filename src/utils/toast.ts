@@ -8,7 +8,7 @@ export const showToast = (message: string, position: string, isSucceed: boolean)
         main.insertAdjacentHTML('beforeend', `
             <div
                 id='toast'
-                class='${position === 'top' ? 'toast-top-keyframe top-[-80px]' : 'toast-bottom-keyframe bottom-[-80px]'} flex-center fixed left-[50%] z-50 translate-x-[-50%] rounded-[8px] bg-[#F5F6F7] p-5 text-xl shadow-toast duration-150 ease-linear'
+                class='${position === 'top' ? 'toast-top-keyframe top-[-80px]' : 'toast-bottom-keyframe bottom-[-80px]'} flex-center fixed left-[50%] z-50 translate-x-[-50%] rounded-[8px] bg-[#F5F6F7] p-5 text-sm md:text-xl shadow-toast duration-150 ease-linear'
             >
                 ${isSucceed ? `
                     <svg
@@ -42,7 +42,7 @@ export const showToast = (message: string, position: string, isSucceed: boolean)
                     </svg>
 
                 `}
-                <span class='pl-2'> ${message}</span>
+                <span class='whitespace-nowrap pl-2'> ${message}</span>
             </div>
         `);
     }
