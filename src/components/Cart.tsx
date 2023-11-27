@@ -1,5 +1,6 @@
 import { CartItem } from "../models/cartItem"
 import CartProductPopup from "./CartProductPopup"
+import { Link } from "react-router-dom"
 import { RootState } from "../redux/reducers"
 import { useSelector } from "react-redux"
 
@@ -42,9 +43,12 @@ const Cart = () => {
                   </div>
                </div>
                <div>
-                  <button className='rounded-[8px] border-2 border-orange-primary hover:bg-white hover:text-orange-primary duration-150 ease-in-out bg-orange-primary px-9 py-3 text-13 text-white'>
+                  <Link
+                     to={"/checkout"}
+                     className='rounded-[8px] border-2 border-orange-primary hover:bg-white hover:text-orange-primary duration-150 ease-in-out bg-orange-primary px-9 py-3 text-13 text-white'
+                  >
                      Checkout
-                  </button>
+                  </Link>
                </div>
             </div>
          </div>

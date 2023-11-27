@@ -11,7 +11,7 @@ export const wishlistReducer = (state = initialState, action: { type: string, pa
             if (IS_EXISTED_IN_WISHLIST === true) {
                 return state.filter((wishlistItem) => wishlistItem._id !== action.payload._id)
             } else {
-                return [ ...state, { ...action.payload, isWishlisted: true } ]
+                return [ ...state, action.payload ]
             }
         }
         default: {
