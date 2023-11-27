@@ -2,6 +2,7 @@ import React, { useState } from "react"
 
 import Input from "./Input"
 import OrderDetail from "./OrderDetail"
+import { PaymentFormModel } from "../models/paymentForm"
 import PaymentMethods from "./PaymentMethods"
 import { RootState } from "../redux/reducers"
 import { useSelector } from "react-redux"
@@ -34,11 +35,46 @@ const PaymentForm = () => {
       TAX_COLLECTED +
       SHIPMENT_COST
 
-   const handleSubmitForm = () => {
-      const paymentForm = document.getElementById("payment_form")
+   const handleSubmitForm = async () => {
+      const formData: PaymentFormModel = {
+         address: address,
+         cardName: cardName,
+         cardNumber: cardNumber ?? 0,
+         cvv: cvv ?? 0,
+         expDate: expDate,
+         firstName: firstName,
+         lastName: lastName,
+         numberOfItems: numberOfItems,
+         orderTotal: orderTotal + "",
+         phone: phone ?? 0,
+      }
+      try {
+         const response = await fetch(
+            "https://testapi.io/api/dinomerch/resource/payment",
+            {
+               method: "POST",
+               headers: {
+                  "Content-Type": "application/json",
+               },
+               body: JSON.stringify(formData),
+            }
+         )
+         if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`)
+         }
+         const resData = await response.json()
+         console.log(resData)
+      } catch (error) {}
    }
    return (
-      <form onSubmit={handleSubmitForm} id='payment_form' method='POST'>
+      <form
+         onSubmit={(e) => {
+            e.preventDefault()
+            handleSubmitForm()
+         }}
+         id='payment_form'
+         method='POST'
+      >
          <div className='mb-14 grid w-full grid-cols-11 gap-10'>
             <div className='col-span-6'>
                <h1 className='mb-8 text-28 font-semibold'>Shipping Address</h1>

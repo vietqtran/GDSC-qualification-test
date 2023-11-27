@@ -1,4 +1,4 @@
-export interface PaymentForm {
+export interface PaymentFormModel {
     firstName: string;
     lastName: string;
     phone: number;
