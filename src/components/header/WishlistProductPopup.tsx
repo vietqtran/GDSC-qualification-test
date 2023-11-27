@@ -1,7 +1,6 @@
-import AddToCartButton from "./AddToCartButton"
-import { Product } from "../models/product"
-import React from "react"
-import { addItemToCart } from "../redux/actions/cartAction"
+import AddToCartButton from "../AddToCartButton"
+import { Product } from "../../models/product"
+import { addItemToCart } from "../../redux/actions/cartAction"
 import { useDispatch } from "react-redux"
 
 type Props = {

@@ -53,7 +53,6 @@ export const showToast = (message: string, position: string, isSucceed: boolean)
         } else {
             toast.style.bottom = '40px'
         }
-        console.log(toast)
         setTimeout(() => {
             toast.remove()
         }, 2000)

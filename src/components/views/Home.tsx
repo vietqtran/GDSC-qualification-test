@@ -1,6 +1,6 @@
-import Banner from "../components/Banner"
-import MainLayout from "../components/layout/MainLayout"
-import ProductList from "../components/ProductList"
+import Banner from "../Banner"
+import MainLayout from "../layout/MainLayout"
+import ProductList from "../ProductList"
 
 type Props = {}
 

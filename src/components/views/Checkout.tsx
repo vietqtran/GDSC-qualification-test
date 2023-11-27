@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
-import MainLayout from "../components/layout/MainLayout"
-import PaymentForm from "../components/PaymentForm"
-import PrevArrow from "../components/icons/PrevArrow"
+import MainLayout from "../layout/MainLayout"
+import PaymentForm from "../payment/PaymentForm"
+import PrevArrow from "../icons/PrevArrow"
 
 const Checkout = () => {
    return (

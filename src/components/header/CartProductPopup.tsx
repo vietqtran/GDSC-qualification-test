@@ -2,12 +2,12 @@ import {
    decreaseCartItemQuantity,
    deleteCartItem,
    increaseCartItemQuantity,
-} from "../redux/actions/cartAction"
+} from "../../redux/actions/cartAction"
 
-import { CartItem } from "../models/cartItem"
-import GarbageIcon from "./icons/GarbageIcon"
-import MinusIcon from "./icons/MinusIcon"
-import PlusIcon from "./icons/PlusIcon"
+import { CartItem } from "../../models/cartItem"
+import GarbageIcon from "../icons/GarbageIcon"
+import MinusIcon from "../icons/MinusIcon"
+import PlusIcon from "../icons/PlusIcon"
 import { useDispatch } from "react-redux"
 
 type Props = {
@@ -52,7 +52,7 @@ const CartProductPopup = ({ product }: Props) => {
                <button onClick={handleDecreaseCartItem} className='p-3'>
                   <MinusIcon />
                </button>
-               <div className='font-semibold w-[30px] text-center'>
+               <div className='w-[30px] text-center font-semibold'>
                   {product.quantity}
                </div>
                <button onClick={handleIncreaseCartItem} className='p-3'>
@@ -65,7 +65,7 @@ const CartProductPopup = ({ product }: Props) => {
             <div>
                <div
                   onClick={handleDeleteCartItem}
-                  className='p-3 cursor-pointer'
+                  className='cursor-pointer p-3'
                >
                   <GarbageIcon />
                </div>

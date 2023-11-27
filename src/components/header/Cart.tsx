@@ -1,7 +1,7 @@
-import { CartItem } from "../models/cartItem"
+import { CartItem } from "../../models/cartItem"
 import CartProductPopup from "./CartProductPopup"
 import { Link } from "react-router-dom"
-import { RootState } from "../redux/reducers"
+import { RootState } from "../../redux/reducers"
 import { useSelector } from "react-redux"
 
 const Cart = () => {
@@ -9,7 +9,7 @@ const Cart = () => {
       (state: RootState) => state.cart
    )
    return (
-      <div className='absolute z-30 left-[50%] top-[100%] mt-5 hidden w-[664px] translate-x-[-50%] rounded-[5px] bg-white p-[33px] text-black shadow-popup group-hover:flex'>
+      <div className='absolute left-[50%] top-[100%] z-30 mt-5 hidden w-[664px] translate-x-[-50%] rounded-[5px] bg-white p-[33px] text-black shadow-popup group-hover:flex'>
          <div className='flex w-full flex-col'>
             {cartProducts && cartProducts.length > 0 && (
                <div className='w-full pb-10'>
@@ -44,7 +44,7 @@ const Cart = () => {
                <div>
                   <Link
                      to={"/checkout"}
-                     className='rounded-[8px] border-2 border-orange-primary hover:bg-white hover:text-orange-primary duration-150 ease-in-out bg-orange-primary px-9 py-3 text-13 text-white'
+                     className='rounded-[8px] border-2 border-orange-primary bg-orange-primary px-9 py-3 text-13 text-white duration-150 ease-in-out hover:bg-white hover:text-orange-primary'
                   >
                      Checkout
                   </Link>

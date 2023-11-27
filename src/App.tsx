@@ -1,8 +1,8 @@
 import { Route, Routes } from "react-router-dom"
 import { persistor, store } from "./redux/store"
 
-import Checkout from "./views/Checkout"
-import Home from "./views/Home"
+import Checkout from "./components/views/Checkout"
+import Home from "./components/views/Home"
 import { PersistGate } from "redux-persist/integration/react"
 import { Provider } from "react-redux"
 

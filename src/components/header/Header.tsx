@@ -1,11 +1,11 @@
 import Cart from "./Cart"
-import CartIcon from "./icons/CartIcon"
-import CartOrangeIcon from "./icons/CartOrangeIcon"
-import DinoIcon from "./icons/DinoIcon"
-import { RootState } from "../redux/reducers"
+import CartIcon from "../icons/CartIcon"
+import CartOrangeIcon from "../icons/CartOrangeIcon"
+import DinoIcon from "../icons/DinoIcon"
+import { RootState } from "../../redux/reducers"
 import Wishlist from "./Wishlist"
-import WishlistIcon from "./icons/WishlistIcon"
-import WishlistOrangeIcon from "./icons/WishlistOrangeIcon"
+import WishlistIcon from "../icons/WishlistIcon"
+import WishlistOrangeIcon from "../icons/WishlistOrangeIcon"
 import { useSelector } from "react-redux"
 
 const Header = () => {
