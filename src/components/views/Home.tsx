@@ -8,7 +8,7 @@ const Home = (props: Props) => {
    return (
       <MainLayout>
          <Banner />
-         <h1 className='py-10 text-center text-50 font-bold'>
+         <h1 className='py-10 text-center text-32 font-bold md:text-50'>
             Chrome Dino Merch
          </h1>
          <ProductList />

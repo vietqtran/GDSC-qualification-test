@@ -10,7 +10,7 @@ const MainLayout = ({ children }: Props) => {
    return (
       <div
          id='main'
-         className='container mx-auto w-full max-w-[1140px] pb-40 pt-12'
+         className='container mx-auto w-full max-w-[1140px] px-5 pb-40 pt-12 md:px-0'
       >
          <ToastTop />
 

@@ -9,7 +9,7 @@ const Cart = () => {
       (state: RootState) => state.cart
    )
    return (
-      <div className='absolute left-[50%] top-[100%] z-30 mt-5 hidden w-[664px] translate-x-[-50%] rounded-[5px] bg-white p-[33px] text-black shadow-popup group-hover:flex'>
+      <div className='absolute right-[-150px] top-[100%] z-30 mt-5 hidden w-fit rounded-[5px] bg-white p-[33px] text-black shadow-popup group-hover:flex md:w-[664px]'>
          <div className='flex w-full flex-col'>
             {cartProducts && cartProducts.length > 0 && (
                <div className='w-full pb-10'>

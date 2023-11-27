@@ -15,12 +15,12 @@ const Header = () => {
       <div className='flex-center-between z-30 w-full'>
          <div className='flex-center p-3'>
             <DinoIcon />
-            <div className='pl-8'>
+            <div className='hidden pl-8 md:block'>
                <h1 className='text-2xl font-semibold'>Dinomerch</h1>
             </div>
          </div>
          <div className='flex-center'>
-            <div className='before:contents-[] after:contents-[] flex-center group relative mr-5 cursor-pointer p-3 before:absolute before:left-[50%] before:top-[100%] before:hidden before:h-[50px] before:w-[664px] before:translate-x-[-50%] before:bg-transparent after:absolute after:left-[50%] after:top-[calc(100%+10px)] after:z-30 after:hidden after:translate-x-[-50%] after:rotate-45 after:bg-white after:p-3 hover:text-orange-primary hover:before:block hover:after:block'>
+            <div className='before:contents-[] after:contents-[] flex-center group relative cursor-pointer p-3 before:absolute before:left-[50%] before:top-[100%] before:hidden before:h-[50px] before:w-[664px] before:translate-x-[-50%] before:bg-transparent after:absolute after:left-[50%] after:top-[calc(100%+10px)] after:z-30 after:hidden after:translate-x-[-50%] after:rotate-45 after:bg-white after:p-3 hover:text-orange-primary hover:before:block hover:after:block md:mr-5'>
                <div
                   className={`${
                      isCheckoutPage ? "hidden" : "block group-hover:hidden"
@@ -49,7 +49,7 @@ const Header = () => {
                   </div>
                )}
             </div>
-            <div className='before:contents-[] flex-center group relative ml-5 cursor-pointer p-3 text-black before:absolute before:left-[50%] before:top-[100%] before:hidden before:h-[50px] before:w-[664px] before:translate-x-[-50%] before:bg-transparent hover:text-orange-primary hover:before:block'>
+            <div className='before:contents-[] flex-center group relative cursor-pointer p-3 text-black before:absolute before:left-[50%] before:top-[100%] before:hidden before:h-[50px] before:w-[664px] before:translate-x-[-50%] before:bg-transparent hover:text-orange-primary hover:before:block md:ml-5'>
                <div className='block group-hover:hidden'>
                   <WishlistIcon />
                </div>

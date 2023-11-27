@@ -31,7 +31,10 @@ const ProductList = () => {
    }
 
    return (
-      <div className='grid w-full grid-cols-3 gap-10' id='products'>
+      <div
+         className='grid w-full grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3'
+         id='products'
+      >
          {products.map((product) => {
             return (
                <ProductCard

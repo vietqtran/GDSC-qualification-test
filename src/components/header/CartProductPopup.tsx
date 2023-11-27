@@ -35,14 +35,14 @@ const CartProductPopup = ({ product }: Props) => {
 
    return (
       <div className='flex-center-between h-[120px] cursor-default border-b-[1px] border-b-gray-300 p-2'>
-         <div className='h-full'>
+         <div className='aspect-square h-full'>
             <img
                alt={product.product.name}
-               className='aspect-square h-full object-cover'
+               className='h-full w-full object-cover'
                src={product.product.image}
             />
          </div>
-         <div className='flex-1'>
+         <div className='hidden md:block md:flex-1'>
             <p className='w-full truncate px-5 text-13 font-semibold'>
                {product.product.name}
             </p>

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react"
+import React, { Fragment, useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 
 import Input from "./Input"
@@ -18,8 +18,6 @@ const TAX_COLLECTED = 0.8
 const PaymentForm = () => {
    const dispatch = useDispatch()
    const cartProducts = useSelector((state: RootState) => state.cart)
-
-   const [orderProducts, setOrderProducts] = useState(cartProducts)
    const [showInvoice, setShowInvoice] = useState(false)
 
    const [firstName, setFirstName] = useState("")
@@ -145,12 +143,12 @@ const PaymentForm = () => {
             id='payment_form'
             method='POST'
          >
-            <div className='mb-14 grid w-full grid-cols-11 gap-10'>
-               <div className='col-span-6'>
-                  <h1 className='mb-8 text-28 font-semibold'>
+            <div className='mb-14 grid w-full grid-cols-1 gap-10 md:grid-cols-11'>
+               <div className='col-span-1 md:col-span-6'>
+                  <h1 className='mb-8 text-xl font-semibold md:text-28'>
                      Shipping Address
                   </h1>
-                  <div className='grid grid-cols-2 gap-4'>
+                  <div className='grid w-full grid-cols-2 gap-4'>
                      <div className='col-span-1'>
                         <Input
                            type='text'
@@ -181,8 +179,8 @@ const PaymentForm = () => {
                      label='Street Address'
                   />
                </div>
-               <div className='col-span-5'>
-                  <h1 className='mb-5 text-28 font-semibold'>
+               <div className='col-span-1 md:col-span-5'>
+                  <h1 className='mb-5 text-xl font-semibold md:text-28'>
                      Payment Details
                   </h1>
                   <div className='mb-5'>
@@ -220,13 +218,21 @@ const PaymentForm = () => {
                   </div>
                </div>
             </div>
-            <div className='grid w-full grid-cols-11 gap-10'>
-               <div className='col-span-6'>
-                  <h1 className='mb-8 text-28 font-semibold'>Order Details</h1>
-                  <OrderDetail products={orderProducts} />
+            <div className='grid w-full grid-cols-1 gap-10 md:grid-cols-11'>
+               <div className='col-span-1 md:col-span-6'>
+                  {cartProducts.length > 0 && (
+                     <>
+                        <h1 className='mb-8 text-xl font-semibold md:text-28'>
+                           Order Details
+                        </h1>
+                        <OrderDetail products={cartProducts} />
+                     </>
+                  )}
                </div>
-               <div className='col-span-5 p-5'>
-                  <h1 className='mb-5 text-28 font-semibold'>Order Summary</h1>
+               <div className='col-span-1 p-5 md:col-span-5'>
+                  <h1 className='mb-5 text-xl font-semibold md:text-28'>
+                     Order Summary
+                  </h1>
                   <div className='w-full max-w-[430px] text-15 text-[#5D6B82]'>
                      <div className='flex-center-between pb-4'>
                         <span>{`Items (${numberOfItems}): `}</span>
