@@ -10,7 +10,7 @@ const Cart = () => {
    )
    console.log(cartProducts)
    return (
-      <div className='absolute left-[50%] top-[100%] mt-5 hidden w-[664px] translate-x-[-50%] rounded-[5px] bg-white p-[33px] text-black shadow-popup group-hover:flex'>
+      <div className='absolute z-50 left-[50%] top-[100%] mt-5 hidden w-[664px] translate-x-[-50%] rounded-[5px] bg-white p-[33px] text-black shadow-popup group-hover:flex'>
          <div className='flex w-full flex-col'>
             {cartProducts && cartProducts.length > 0 && (
                <div className='w-full pb-10'>

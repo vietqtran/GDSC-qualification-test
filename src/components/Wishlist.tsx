@@ -1,33 +1,15 @@
-import React, { useEffect, useState } from "react"
-
-import { Product } from "../models/product"
+import { RootState } from "../redux/reducers"
 import WishlistProductPopup from "./WishlistProductPopup"
+import { useSelector } from "react-redux"
 
 const Wishlist = () => {
-   const [products, setProducts] = useState<Product[]>([])
-
-   useEffect(() => {
-      const fetchData = async () => {
-         try {
-            const response = await fetch(
-               "https://testapi.io/api/dinomerch/products"
-            )
-            if (!response.ok) {
-               throw new Error(`HTTP error! status: ${response.status}`)
-            }
-            const data = await response.json()
-            setProducts(data)
-         } catch (error) {}
-      }
-
-      fetchData()
-   }, [])
+   const wishlistProducts = useSelector((state: RootState) => state.wishlist)
 
    return (
-      <div className='absolute left-[50%] top-[100%] mt-2 hidden w-[300px] translate-x-[-50%] cursor-default rounded-[5px] bg-white text-black shadow-popup group-hover:flex'>
-         {products && products.length > 0 && (
+      <div className='absolute z-50 left-[50%] top-[100%] mt-2 hidden w-[300px] translate-x-[-50%] cursor-default rounded-[5px] bg-white text-black shadow-popup group-hover:flex'>
+         {wishlistProducts && wishlistProducts.length > 0 && (
             <div className='p-4'>
-               {products.map((product) => {
+               {wishlistProducts.map((product) => {
                   return (
                      <WishlistProductPopup
                         product={product}
