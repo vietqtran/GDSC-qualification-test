@@ -33,14 +33,19 @@ const PaymentForm = () => {
       ) +
       TAX_COLLECTED +
       SHIPMENT_COST
+
+   const handleSubmitForm = () => {
+      const paymentForm = document.getElementById("payment_form")
+   }
    return (
-      <div>
-         <div className='w-full grid grid-cols-11 gap-10 mb-14'>
+      <form onSubmit={handleSubmitForm} id='payment_form' method='POST'>
+         <div className='mb-14 grid w-full grid-cols-11 gap-10'>
             <div className='col-span-6'>
-               <h1 className='text-28 font-semibold mb-8'>Shipping Address</h1>
+               <h1 className='mb-8 text-28 font-semibold'>Shipping Address</h1>
                <div className='grid grid-cols-2 gap-4'>
                   <div className='col-span-1'>
                      <Input
+                        type='text'
                         value={firstName}
                         setValue={setFirstName}
                         label='First Name'
@@ -48,6 +53,7 @@ const PaymentForm = () => {
                   </div>
                   <div className='col-span-1'>
                      <Input
+                        type='text'
                         setValue={setLastName}
                         value={lastName}
                         label='Last Name'
@@ -55,27 +61,31 @@ const PaymentForm = () => {
                   </div>
                </div>
                <Input
+                  type='number'
                   value={phone ?? ""}
                   setValue={setPhone}
                   label='Phone Number'
                />
                <Input
+                  type='text'
                   value={address}
                   setValue={setAddress}
                   label='Street Address'
                />
             </div>
             <div className='col-span-5'>
-               <h1 className='text-28 font-semibold mb-5'>Payment Details</h1>
+               <h1 className='mb-5 text-28 font-semibold'>Payment Details</h1>
                <div className='mb-5'>
                   <PaymentMethods />
                </div>
                <Input
+                  type='text'
                   setValue={setCardName}
                   value={cardName}
                   label='Cardholder Name'
                />
                <Input
+                  type='number'
                   value={cardNumber ?? ""}
                   setValue={setCardNumber}
                   label='Cardholder Number'
@@ -83,25 +93,31 @@ const PaymentForm = () => {
                <div className='grid grid-cols-2 gap-4'>
                   <div className='col-span-1'>
                      <Input
+                        type='text'
                         setValue={setExpDate}
                         value={expDate}
                         label='Expiration Date'
                      />
                   </div>
                   <div className='col-span-1'>
-                     <Input setValue={setCvv} value={cvv ?? ""} label='CVV' />
+                     <Input
+                        type='number'
+                        setValue={setCvv}
+                        value={cvv ?? ""}
+                        label='CVV'
+                     />
                   </div>
                </div>
             </div>
          </div>
-         <div className='w-full grid grid-cols-11 gap-10'>
+         <div className='grid w-full grid-cols-11 gap-10'>
             <div className='col-span-6'>
-               <h1 className='text-28 font-semibold mb-8'>Order Details</h1>
+               <h1 className='mb-8 text-28 font-semibold'>Order Details</h1>
                <OrderDetail products={cartProducts} />
             </div>
             <div className='col-span-5 p-5'>
-               <h1 className='text-28 font-semibold mb-5'>Order Summary</h1>
-               <div className='max-w-[430px] w-full text-15 text-[#5D6B82]'>
+               <h1 className='mb-5 text-28 font-semibold'>Order Summary</h1>
+               <div className='w-full max-w-[430px] text-15 text-[#5D6B82]'>
                   <div className='flex-center-between pb-4'>
                      <span>{`Items (${numberOfItems}): `}</span>
                      <span>
@@ -117,20 +133,23 @@ const PaymentForm = () => {
                      <span>Tax Collected: </span>
                      <span>$ {TAX_COLLECTED.toFixed(2)}</span>
                   </div>
-                  <hr className='w-[380px] mx-auto mt-3 mb-8 block' />
-                  <div className='flex-center-between font-semibold pb-4'>
+                  <hr className='mx-auto mb-8 mt-3 block w-[380px]' />
+                  <div className='flex-center-between pb-4 font-semibold'>
                      <span>Order total: </span>
                      <span>$ {orderTotal.toFixed(2)}</span>
                   </div>
-                  <div className='grid place-items-center mt-5 '>
-                     <button className='py-5 font-semibold px-[82px] border-2 border-orange-primary hover:text-orange-primary hover:bg-white duration-150 ease-out bg-orange-primary rounded-lg text-white text-xl'>
+                  <div className='mt-5 grid place-items-center'>
+                     <button
+                        type='submit'
+                        className='rounded-lg border-2 border-orange-primary bg-orange-primary px-[82px] py-5 text-xl font-semibold text-white duration-150 ease-out hover:bg-white hover:text-orange-primary'
+                     >
                         Confirm order
                      </button>
                   </div>
                </div>
             </div>
          </div>
-      </div>
+      </form>
    )
 }
 
