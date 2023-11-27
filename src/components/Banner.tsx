@@ -1,6 +1,6 @@
 import DownArrow from "./icons/DownArrow"
 import GiantDino from "./icons/GiantDino"
-import React from "react"
+import { Link } from "react-router-dom"
 
 const Banner = () => {
    return (
@@ -12,9 +12,12 @@ const Banner = () => {
             <h2 className='w-50 pb-8 pt-3 text-32 leading-[39px]'>
                Elevate Your Wardrobe with <br /> Exclusive merch
             </h2>
-            <button className='flex-center w-fit rounded-md bg-orange-primary px-6 py-4 text-13 font-semibold'>
+            <a
+               href='#products'
+               className='flex-center w-fit rounded-md bg-orange-primary px-6 py-4 text-13 font-semibold'
+            >
                <span className='mr-3'>Scroll down for more</span> <DownArrow />
-            </button>
+            </a>
          </div>
          <div>
             <GiantDino />
