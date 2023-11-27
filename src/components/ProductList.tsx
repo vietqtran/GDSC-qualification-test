@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react"
 
+import { CartItem } from "../models/cartItem"
 import { Product } from "../models/product"
 import ProductCard from "./ProductCard"
+import { RootState } from "../redux/reducers"
+import { useSelector } from "react-redux"
 
 const ProductList = () => {
    const [products, setProducts] = useState<Product[]>([])
+   const cartProducts: CartItem[] = useSelector(
+      (state: RootState) => state.cart
+   )
 
+   console.log(cartProducts)
    useEffect(() => {
       const fetchData = async () => {
          try {
