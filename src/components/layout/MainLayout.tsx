@@ -9,7 +9,7 @@ const MainLayout = ({ children }: Props) => {
    return (
       <div className='container mx-auto w-full max-w-[1140px] pb-40 pt-12'>
          <Header />
-         <main>{children}</main>
+         <main className='z-0'>{children}</main>
       </div>
    )
 }

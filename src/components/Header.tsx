@@ -11,7 +11,7 @@ import { useSelector } from "react-redux"
 const Header = () => {
    const cartQuantity = useSelector((state: RootState) => state.cart).length
    return (
-      <div className='flex-center-between w-full'>
+      <div className='flex-center-between w-full z-50'>
          <div className='flex-center p-3'>
             <DinoIcon />
             <div className='pl-8'>

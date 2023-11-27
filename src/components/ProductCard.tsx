@@ -1,6 +1,8 @@
 import AddToCartButton from "./AddToCartButton"
 import { Product } from "../models/product"
-import React from "react"
+import ProductCardHeartOutline from "./icons/ProductCardHeartOutline"
+import { RootState } from "../redux/reducers"
+import { useSelector } from "react-redux"
 
 type Props = {
    product: Product
@@ -8,9 +10,22 @@ type Props = {
 }
 
 const ProductCard = ({ product, handleAddToCart }: Props) => {
+   const wishlistProducts = useSelector(
+      (state: RootState) => state.wishlist
+   ).map((item) => item._id)
    return (
       <div className='col-span-1 p-3'>
-         <div className='w-full bg-[#f3f3f3] p-10'>
+         <div className='w-full bg-[#f3f3f3] p-10 relative z-0'>
+            {wishlistProducts.includes(product._id) && (
+               <div className='absolute right-0 top-0 m-3 p-3 box-content cursor-pointer'>
+                  <ProductCardHeartOutline />
+               </div>
+            )}
+            {!wishlistProducts.includes(product._id) && (
+               <div className='absolute right-0 top-0 m-3 p-3 box-content cursor-pointer'>
+                  <ProductCardHeartOutline />
+               </div>
+            )}
             <img
                src={product.image}
                alt={product.name}
