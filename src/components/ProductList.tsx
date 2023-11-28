@@ -11,7 +11,7 @@ const ProductList = () => {
       const fetchData = async () => {
          try {
             const response = await fetch(
-               process.env.REACT_APP_DINOMERCH_PRODUCTS_GET_API as string
+               "https://testapi.io/api/dinomerch/products"
             )
             if (!response.ok) {
                throw new Error(`HTTP error! status: ${response.status}`)
