@@ -7,18 +7,21 @@ import { useDispatch } from "react-redux"
 
 const ProductList = () => {
    const [products, setProducts] = useState<Product[]>([])
-
    useEffect(() => {
       const fetchData = async () => {
          try {
             const response = await fetch(
-               "https://testapi.io/api/dinomerch/products"
+               process.env.REACT_APP_DINOMERCH_PRODUCTS_GET_API as string
             )
             if (!response.ok) {
                throw new Error(`HTTP error! status: ${response.status}`)
             }
             const data = await response.json()
-            setProducts(data)
+            if (data.success) {
+               setProducts(data.data)
+            } else {
+               setProducts([])
+            }
          } catch (error) {}
       }
 
