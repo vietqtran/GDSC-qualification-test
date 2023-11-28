@@ -12,7 +12,7 @@ const ProductList = () => {
       const fetchData = async () => {
          try {
             const response = await fetch(
-               "https://testapi.io/api/dinomerch/products"
+               "https://testapi.io/api/dinomerchv2/products"
             )
             if (!response.ok) {
                throw new Error(`HTTP error! status: ${response.status}`)
