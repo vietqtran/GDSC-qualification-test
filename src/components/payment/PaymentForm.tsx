@@ -56,7 +56,7 @@ const PaymentForm = () => {
    const handleSubmitForm = async () => {
       try {
          const response = await fetch(
-            "https://testapi.io/api/dinomerch/resource/payment",
+            process.env.REACT_APP_DINOMERCH_PAYMENT_POST_API as string,
             {
                method: "POST",
                headers: {
@@ -68,6 +68,7 @@ const PaymentForm = () => {
          if (!response.ok) {
             throw new Error(`HTTP error! status: ${response.status}`)
          }
+         console.log(response)
          console.log(formData)
          setShowInvoice(true)
          dispatch(emptyCart())
